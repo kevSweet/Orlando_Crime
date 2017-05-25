@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(MeanShift)\n\n#defines latandlong as columns of opd crimes offense type, lat, and long\nlatandlong <- subset(OPD_CrimesParsed_NoUnmapped, select = c(\"Case Offense Type\", \"Latitude\", \"Longitude\"))\n\n#generates a random matrix from latandlong dataset of size (2x10000). Matrix retains row indices\nr.sample <- latandlong[sample(nrow(latandlong),size=5000,replace=FALSE),]\n\nr.coords <- subset(r.sample, select = c(\"Latitude\",\"Longitude\"))\n\n#performs mean shift clustering with bandwidth h\n\nms <- msClustering(t(r.coords),h=.01,multi.core = TRUE)\n\nplot(r.sample, col = ms$labels,xlab = \"Latitude\", ylab = \"Longitude\", main = \"Mean Shift Clustering\")\n\n",
+    "created" : 1487863605846.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "934214790",
+    "id" : "6BEFB680",
+    "lastKnownWriteTime" : 1488159421,
+    "last_content_update" : 1488159421144,
+    "path" : "~/Desktop/Research/Orlando Crime/Scripts/MeanShift.R",
+    "project_path" : "Scripts/MeanShift.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

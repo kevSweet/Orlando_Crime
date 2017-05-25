@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#Runs kmeans clustering\n\n#Cluster number found from Mean Shift Clustering\nkm <- kmeans(r.coords, centers = 74)\nplot(r.sample, col = km$cluster,xlab = \"Latitude\",ylab = \"Longitude\", main = \"K-Means Clustering\")\n",
+    "created" : 1488157797267.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4014932412",
+    "id" : "8E44714E",
+    "lastKnownWriteTime" : 1488159418,
+    "last_content_update" : 1488159418519,
+    "path" : "~/Desktop/Research/Orlando Crime/Scripts/Kmeans.R",
+    "project_path" : "Scripts/Kmeans.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
