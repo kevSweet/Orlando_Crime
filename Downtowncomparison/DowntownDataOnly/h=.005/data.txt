@@ -1,2 +1,0 @@
-Clusters: 15
-Data in window: 5000

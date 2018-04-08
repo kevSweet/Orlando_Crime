@@ -2,9 +2,8 @@
 #add all matrices together
 #find average map
 #subtract average map from each frame
-
+require("png")
 generateDiffImages <- function(lmat){
-setwd("/home/sweetkevindan/Desktop/git/GridTracking/output/deviationfromaverageovertime/")
 
 #finds average matrix from matrices in list
 tmat <- Reduce("+", lmat)
@@ -53,7 +52,7 @@ for(i in 1:length(lmat)){
   final_image[,,3] <-  Bpos.mat * Bneg.mat
   final_image[,,4] <- 0.9
   #final_image[,,3] <-  ifelse(Bpos.mat + Bneg.mat == 2, Bpos.mat, Bpos.mat + Bneg.mat)
-  fn <- paste("day", toString(i),".png", sep = "")
+  fn <- paste("./images/deviationfromaverageovertime/day", toString(i),".png", sep = "")
   writePNG(final_image, target = fn)
 }
 generateDiffImages <- avgmat

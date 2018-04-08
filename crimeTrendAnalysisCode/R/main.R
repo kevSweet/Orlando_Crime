@@ -1,11 +1,10 @@
 #loads in functions from .R scripts
 
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/latlongtoNM.R")
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/timeline.R")
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/differences.R")
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/findMax.R")
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/getSparseList.R")
-source("/home/sweetkevindan/Desktop/git/GridTracking/R/matrixovertime.R")
+source("./latlongtoNM.R")
+source("./timeline.R")
+source("./differences.R")
+source("./findMax.R")
+source("./matrixovertime.R")
 
 
 library(lubridate)
@@ -18,7 +17,7 @@ library(png)
 #OBJECTIVE: Load in data and format to distance instead of coordinates
 
 #read in data 
-matData <- read_csv("/home/sweetkevindan/Desktop/git/GridTracking/data/OPD_CrimesParsed_NoUnmapped.csv", col_types = cols(`Case Date Time` = col_datetime(format = "%m/%d/%Y %H:%M")))
+matData <- read_csv("./data/OPD_CrimesParsed_NoUnmapped.csv", col_types = cols(`Case Date Time` = col_datetime(format = "%m/%d/%Y %H:%M")))
 
 #select only relevant columns, also converts Datetime to Unix Time
 matData <- data.matrix(subset(matData, select = c("Latitude", "Longitude","Case Date Time")))
@@ -79,10 +78,11 @@ for(x in 1:nrow(matData)){
 
 
 fullMatrixList <- vector("list")
-rm(l,i,idimsize,jdimsize,orlcenter,bs,temp,rad,startTime)
+
 
 #call from script matrixovertime.R
 fullMatrixList <- crimeMatrixOverTime(l, matData)
+rm(l,i,idimsize,jdimsize,orlcenter,bs,temp,rad,startTime)
 
 #call from script differences.R
 avgmat <- generateDiffImages(fullMatrixList)
